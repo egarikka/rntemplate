@@ -9,8 +9,7 @@ export const StyledCustomText = {
     font-size: ${({ fontSize }) => FONTS.size[fontSize!]};
     ${({ color }) => color && `color: ${color}`};
     ${({ alignSelf }) => alignSelf && `align-self: ${alignSelf}`};
-    /* FIXME font-family: ${({ family }) =>
-      family ? FONTS.family[family] : FONTS.family.regular}; */
-    font-weight: ${({ weight }) => FONTS.weight[weight!]};
+    font-family: ${({ family }) => FONTS.family[family!]};
+    ${({ disabled, theme }) => disabled && `color: ${theme.text.disabled}`};
   `,
 };

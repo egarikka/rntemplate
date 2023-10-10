@@ -1,12 +1,18 @@
-import { TIconNames } from 'components/atoms/icon';
-
 export interface IInputProps {
   value: string;
   placeholder?: string;
   isAutoFocus?: boolean;
   isClearable?: boolean;
+  isError?: boolean;
   setValue: (value: string) => void;
-  iconColor?: string;
   textColor?: string;
-  iconType?: TIconNames;
+  type?: TInput;
 }
+
+export interface IInputStyles {
+  type: TInput;
+  isFocus: boolean;
+  isError?: boolean;
+}
+
+export type TInput = 'default' | 'password' | 'search';

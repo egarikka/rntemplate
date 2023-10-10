@@ -1,14 +1,6 @@
-import { StyleProp, ViewStyle } from 'react-native';
+import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 import { TIconNames } from '../icon';
-
-import { TStyles } from '@typings/styles';
-
-export enum EButtonType {
-  default = 'default',
-  rounded = 'rounded',
-  base = 'base',
-}
 
 export interface ICustomButtonProps extends IStyledCustomButtonProps {
   text?: string;
@@ -16,17 +8,15 @@ export interface ICustomButtonProps extends IStyledCustomButtonProps {
   activeOpacity?: number;
   isLoading?: boolean;
   activityIndicatorColor?: string;
+  textStyle?: StyleProp<TextStyle>;
   style?: StyleProp<ViewStyle>;
   onPress: () => void;
 }
 
 export interface IStyledCustomButtonProps {
-  type?: EButtonType;
+  type?: 'default' | 'rounded' | 'base' | 'delete';
+  isAlignStart?: boolean;
   height?: number;
   width?: number | string;
   isDisabled?: boolean;
 }
-
-export type TButtonsTypes = {
-  [key in EButtonType]: TStyles;
-};

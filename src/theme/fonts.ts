@@ -1,11 +1,4 @@
 export const FONTS = {
-  weight: {
-    [400]: 400,
-    [500]: 500,
-    [600]: 600,
-    [700]: 700,
-    [800]: 800,
-  },
   size: {
     [7]: '7px',
     [11]: '11px',
@@ -24,10 +17,13 @@ export const FONTS = {
     [40]: '40px',
   },
   family: {
-    regular: 'Sans',
+    regular: 'Inter-Regular',
+    extraBold: 'Inter-ExtraBold',
+    medium: 'Inter-Medium',
+    bold: 'Inter-Bold',
+    semiBold: 'Inter-SemiBold',
   },
 } as const;
 
 export type TFontSizes = keyof typeof FONTS.size;
-export type TFontWeights = keyof typeof FONTS.weight;
 export type TFontFamilies = keyof typeof FONTS.family;

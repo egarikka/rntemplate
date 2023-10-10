@@ -7,7 +7,7 @@ import { COLORS } from '@theme/colors';
 
 export const CustomStatusBar: FC<ICustomStatusBar> = ({ background, ...props }) => {
   const barStyle = props.barStyle || 'dark-content';
-  const bg = background || COLORS.mono.white;
+  const bg = background || COLORS.white;
 
   return (
     <SafeAreaView>

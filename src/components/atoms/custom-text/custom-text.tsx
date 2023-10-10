@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 import { GestureResponderEvent, Linking, TouchableOpacity } from 'react-native';
 
-import { TEXT_TYPE } from './custom-text.constants';
+import { COLORS } from '@theme/colors';
+
 import { ACTIVE_OPACITY, HIT_SLOP_SMALL } from '@constants/styles';
 
 import { ICustomTextProps } from './custom-text.types';
@@ -12,16 +13,15 @@ export const CustomText: FC<ICustomTextProps> = (props) => {
   const {
     url,
     style,
-    weight,
     children,
     numberOfLines,
     alignSelf,
-    family,
+    family = 'regular',
     ellipsizeMode,
     onPress,
-    fontSize,
-    color,
-    isTitle,
+    fontSize = 15,
+    color = COLORS.black,
+    ...textProps
   } = props;
 
   const onTextPress = (event: GestureResponderEvent) => {
@@ -31,20 +31,18 @@ export const CustomText: FC<ICustomTextProps> = (props) => {
     onPress?.(event);
   };
 
-  const { defaultSize, defaultWeight } = TEXT_TYPE[isTitle ? 'title' : 'text'];
-
   const text = (
     <Styled.Text
       alignSelf={alignSelf}
-      weight={weight || defaultWeight}
-      fontSize={fontSize || defaultSize}
+      fontSize={fontSize}
       color={color}
       maxFontSizeMultiplier={1}
       allowFontScaling={false}
       numberOfLines={numberOfLines}
       family={family}
       style={style}
-      ellipsizeMode={ellipsizeMode}>
+      ellipsizeMode={ellipsizeMode}
+      {...textProps}>
       {children}
     </Styled.Text>
   );

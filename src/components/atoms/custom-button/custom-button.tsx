@@ -3,7 +3,7 @@ import { ActivityIndicator } from 'react-native';
 
 import { ACTIVE_OPACITY } from '@constants/styles';
 
-import { EButtonType, ICustomButtonProps } from './custom-button.types';
+import { ICustomButtonProps } from './custom-button.types';
 
 import { StyledCustomButton as Styled } from './custom-button.styles';
 
@@ -11,11 +11,12 @@ import { COLORS } from '@theme/colors';
 
 export const CustomButton: FC<ICustomButtonProps> = (props) => {
   const {
-    type = EButtonType.default,
-    activityIndicatorColor = COLORS.mono.white,
+    type = 'default',
+    activityIndicatorColor = COLORS.white,
     activeOpacity = ACTIVE_OPACITY,
     isLoading,
     iconType,
+    textStyle,
     text,
     ...restProps
   } = props;
@@ -27,7 +28,11 @@ export const CustomButton: FC<ICustomButtonProps> = (props) => {
       ) : (
         <>
           {iconType && <Styled.Icon type={iconType} />}
-          {!!text && <Styled.Text type={type}>{text}</Styled.Text>}
+          {!!text && (
+            <Styled.Text style={textStyle} type={type}>
+              {text}
+            </Styled.Text>
+          )}
         </>
       )}
     </Styled.CustomButton>

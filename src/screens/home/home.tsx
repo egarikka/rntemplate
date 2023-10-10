@@ -1,93 +1,140 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { SafeAreaView, ScrollView, Text, View } from 'react-native';
+import Toast from 'react-native-toast-message';
 
-import { CenterContainer, RowContainer } from '@components/atoms/container';
+import { CenterContainer } from '@components/atoms/container';
 import { CustomButton } from '@components/atoms/custom-button';
+import { CustomModal } from '@components/atoms/custom-modal';
+import { Icon } from '@components/atoms/icon';
 import { Input } from '@components/atoms/input';
 import { Spacer } from '@components/atoms/spacer';
-import { globalLoadingRef } from '@components/organisms/global-loading';
-import { globalMessageRef } from '@components/organisms/global-message';
-import { Layout } from '@components/organisms/layout';
 
-import { useThemedBackgroundColor } from '@services/hooks/animated-background';
+import { BottomSheet } from '@components/molecules/bottom-sheet/bottom-sheet';
 
-import { EButtonType } from '../../components/atoms/custom-button/custom-button.types';
+import { useBottomSheet } from '@services/hooks/bottom-sheet';
+import { useOpenCloseModal } from '@services/hooks/open-close';
 
 export const Home: React.FC = () => {
+  const { isOpen, onToggle } = useOpenCloseModal();
+  const deleteModal = useOpenCloseModal();
+  const bottomModal = useOpenCloseModal();
+  const sucessModal = useOpenCloseModal();
+  const actionModal = useOpenCloseModal();
+
+  const { ref, open } = useBottomSheet();
+
   const [value, setValue] = useState('');
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
-  const { backgroundStyle } = useThemedBackgroundColor(isDarkTheme);
-
-  const showLoading = () => {
-    globalLoadingRef.current?.show();
-
-    setTimeout(() => {
-      globalLoadingRef.current?.hide();
-    }, 2500);
+  const showErrorToast = () => {
+    Toast.show({
+      type: 'error',
+      text1: 'Couldnt log in. Please check your email and password and try again.',
+    });
   };
-
-  const showMessage = () => {
-    globalMessageRef.current?.show('Global Message', 'Content');
+  const showSuccessToast = () => {
+    Toast.show({
+      type: 'success',
+      text1: 'Couldnt log in. Please check your email and password and try again.',
+    });
   };
-
-  const toggleTheme = () => {
-    setIsDarkTheme((prev) => !prev);
-  };
-
   return (
-    <Layout
-      isWithVerticalIndents
-      isWithScroll
-      bgColor={'#333'}
-      titleColor={'blue'}
-      title={'Home'}
-      iconType={'cross'}
-      iconColor={'darkgray'}
-      isWithBackArrow
-      elasticScrollColor={'lightblue'}
-      actions={
-        <RowContainer>
-          {/* <CustomButton textColor='#FFF' text='a' onPress={showLoading} />
-          <Spacer isHorizontal gap={10} />
-          <CustomButton textColor='#FFF' text='b' onPress={showMessage} /> */}
-        </RowContainer>
-      }
-      headerChildren={
-        <Input
-          value={value}
-          setValue={setValue}
-          textColor={'#000'}
-          placeholder={'In header!'}
-          iconType={'search'}
-          isClearable
-        />
-      }>
-      <Spacer gap={20} />
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled">
+        <Spacer gap={10} />
 
-      <CenterContainer>
-        <CustomButton
-          onPress={() => { }}
-          text={'save'}
-          type={EButtonType.rounded}
-          iconType={'cross'}
+        <CustomModal
+          cancelText="Cancel"
+          actionText="Save"
+          isOpen={isOpen}
+          modalTitle={'Invite your '}
+          onClose={onToggle}
+          onAction={onToggle}>
+          <View />
+        </CustomModal>
+        <CustomModal
+          cancelText="Cancel"
+          actionText="Delete"
+          isOpen={deleteModal.isOpen}
+          modalTitle={'Invite your '}
+          onClose={deleteModal.onToggle}
+          onAction={deleteModal.onToggle}
+          isDelete>
+          <View />
+        </CustomModal>
+        <CustomModal
+          cancelText="Cancel"
+          actionText="Save"
+          isOpen={bottomModal.isOpen}
+          modalTitle={'Invite your '}
+          onClose={bottomModal.onToggle}
+          onAction={bottomModal.onToggle}
+          isBottom>
+          <View />
+        </CustomModal>
+
+        <CustomModal cancelText="Cancel" isOpen={sucessModal.isOpen} onClose={sucessModal.onToggle}>
+          <View />
+          <Icon type="success" />
+        </CustomModal>
+
+        <CustomModal
+          cancelText="Cancel"
+          isOpen={actionModal.isOpen}
+          modalTitle={'Action'}
+          onClose={actionModal.onToggle}
+          isBottom
         />
-        <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between' }}>
-          <CustomButton onPress={() => { }} text={'cancel'} type={EButtonType.base} width={150} />
-          <CustomButton onPress={() => { }} text={'save'} type={EButtonType.default} width={150} />
-        </View>
-        {/* <Animated.View style={[backgroundStyle]}>
-          <CustomImage
-            resizeMode='contain'
-            source={{
-              uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png',
-            }}
-            width={150}
-            height={150}
+
+        <BottomSheet sheetRef={ref} renderHeader={<Text>header</Text>} snapPoints={['80%']}>
+          <CustomButton onPress={onToggle} text={'save'} type={'rounded'} />
+        </BottomSheet>
+
+        <CenterContainer>
+          <CustomButton onPress={onToggle} text={'modal'} type="rounded" />
+          <Spacer gap={10} />
+          <CustomButton onPress={sucessModal.onToggle} text={'Success modal'} type='rounded' />
+          <Spacer gap={10} />
+          <CustomButton onPress={actionModal.onToggle} text={'Action Modal'} type='rounded' />
+          <Spacer gap={10} />
+          <CustomButton onPress={showErrorToast} text={'Toast error button'} type="rounded" />
+          <Spacer gap={10} />
+          <CustomButton onPress={showSuccessToast} text={'Toast sucess button'} type="rounded" />
+          <Spacer gap={10} />
+
+          <Spacer gap={10} />
+          <CustomButton onPress={bottomModal.onToggle} text={'Bottom modal'} type='rounded' />
+          <Spacer gap={10} />
+          <CustomButton onPress={deleteModal.onToggle} text={'delete modal'} type='rounded' />
+          <Spacer gap={10} />
+          <CustomButton onPress={open} text={'bottom sheet'} type={'rounded'} />
+        </CenterContainer>
+
+        <View style={{ paddingHorizontal: 10 }}>
+          <Spacer gap={10} />
+          <Input value={value} setValue={setValue} isClearable type="search" placeholder="search" />
+          <Spacer gap={10} />
+          <Input
+            value={value}
+            setValue={setValue}
+            isClearable
+            type="password"
+            placeholder="Password"
           />
-        </Animated.View> */}
-      </CenterContainer>
-      <Spacer gap={50} />
-    </Layout>
+          <Spacer gap={10} />
+          <Input value={value} setValue={setValue} isClearable placeholder="Add users" />
+          <Spacer gap={10} />
+          <Input
+            value={value}
+            setValue={setValue}
+            isClearable
+            type="password"
+            placeholder="Password"
+            isError
+          />
+          <Spacer gap={10} />
+          <Input value={value} setValue={setValue} isClearable placeholder="Danger error" isError />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
