@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { View } from 'react-native';
 import { FadeIn, FadeOut } from 'react-native-reanimated';
 
-import { Icon } from '@components/atoms/icon';
+import { Icon } from '@components/icon';
 
 import { IInputProps } from './input.types';
 

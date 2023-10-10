@@ -7,7 +7,7 @@ import {
   useBottomSheetDynamicSnapPoints,
 } from '@gorhom/bottom-sheet';
 
-import { Icon } from '@components/atoms/icon';
+import { Icon } from '@components/icon';
 
 import { IBottomSheetProps } from './bottom-sheet.types';
 

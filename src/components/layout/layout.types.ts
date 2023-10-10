@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { ICustomHeaderProps } from '@components/atoms/custom-header';
+import { ICustomHeaderProps } from '@components/custom-header';
 
 export enum EElasticScrollPosition {
   top = 'top',

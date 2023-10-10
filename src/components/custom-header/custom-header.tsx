@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Keyboard } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { Icon } from '@components/atoms/icon';
+import { Icon } from '@components/icon';
 
 import { ICustomHeaderProps } from './custom-header.types';
 
@@ -34,7 +34,7 @@ export const CustomHeader: FC<ICustomHeaderProps> = (props) => {
     <Styled.CustomHeader>
       <Styled.Wrapper style={style}>
         <Styled.Main>
-          {isWithBackArrow && canGoBack() && <Icon type="back" onPress={navigateBack} />}
+          {isWithBackArrow && canGoBack() && <Icon type='back' onPress={navigateBack} />}
           {iconType && !isWithoutIcon && <Icon type={iconType} color={iconColor} />}
           {title && (
             <Styled.Title

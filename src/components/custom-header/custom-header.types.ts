@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 
-import { TIconNames } from '@components/atoms/icon';
+import { TIconNames } from '@components/icon';
 
 export interface ICustomHeaderProps {
   title?: string;

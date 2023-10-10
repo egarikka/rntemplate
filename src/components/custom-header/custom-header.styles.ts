@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-import { CustomText } from '@components/atoms/custom-text';
+import { CustomText } from '@components/custom-text';
 
 import { borderBottom } from '@constants/styles';
 

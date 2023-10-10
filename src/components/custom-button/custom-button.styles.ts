@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components/native';
 
-import { Icon } from '@components/atoms/icon';
+import { Icon } from '@components/icon';
 
 import { IStyledCustomButtonProps } from './custom-button.types';
 

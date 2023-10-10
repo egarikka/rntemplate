@@ -2,8 +2,8 @@ import React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import Modal from 'react-native-modal';
 
-import { CustomButton } from '@components/atoms/custom-button/custom-button';
-import { Icon } from '@components/atoms/icon';
+import { CustomButton } from '@components/custom-button/custom-button';
+import { Icon } from '@components/icon';
 import { CustomText } from '../custom-text';
 
 import { ICustomModalProps } from './custom-modal.types';
@@ -67,20 +67,20 @@ export const CustomModal: React.FC<ICustomModalProps> = (props) => {
       <SafeAreaView>
         <Styled.ContentWrapper>
           <Styled.TopSection isBorder={!!modalTitle}>
-            <CustomText family='medium' fontSize={16}>
+            <CustomText family="medium" fontSize={16}>
               {modalTitle}
             </CustomText>
-            <Icon type='roundCross' onPress={onClose} />
+            <Icon type="roundCross" onPress={onClose} />
           </Styled.TopSection>
           <Styled.MainContent>{children}</Styled.MainContent>
           {onAction && actionText && cancelText && (
             <Styled.BottomSection>
-              <CustomButton onPress={onClose} text={cancelText} type='base' width='47%' />
+              <CustomButton onPress={onClose} text={cancelText} type="base" width="47%" />
               <CustomButton
                 onPress={onAction}
                 text={actionText}
                 type={isDelete ? 'delete' : 'default'}
-                width='47%'
+                width="47%"
               />
             </Styled.BottomSection>
           )}

@@ -1,7 +1,7 @@
 import React from 'react';
 import Toast, { ToastConfig } from 'react-native-toast-message';
 
-import { Icon } from '@components/atoms/icon';
+import { Icon } from '@components/icon';
 import { CustomText } from '../custom-text';
 
 import { StyledCustomToast as Styled } from './custom-toast.styles';

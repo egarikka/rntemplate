@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { CustomHeader } from '@components/atoms/custom-header';
-import { CustomStatusBar } from '@components/atoms/custom-status-bar';
+import { CustomHeader } from '@components/custom-header';
+import { CustomStatusBar } from '@components/custom-status-bar';
 
 import { isIOS } from '@constants/device';
 

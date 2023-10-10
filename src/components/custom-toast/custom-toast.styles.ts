@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-import { DEVICE_WIDTH } from '../../../constants/device';
+import { DEVICE_WIDTH } from '../../constants/device';
 
 export const StyledCustomToast = {
   Wrapper: styled.View`

@@ -7,9 +7,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { PersistGate } from 'redux-persist/integration/react';
 import { ThemeProvider } from 'styled-components/native';
 
-import { CustomToast } from '@components/atoms/custom-toast';
-import { GlobalLoading, globalLoadingRef } from '@components/organisms/global-loading';
-import { GlobalMessage, globalMessageRef } from '@components/organisms/global-message';
+import { CustomToast } from '@components/custom-toast';
+import { GlobalLoading, globalLoadingRef } from '@components/global-loading';
+import { GlobalMessage, globalMessageRef } from '@components/global-message';
 
 import { RootNavigator } from '@navigation/navigation.root';
 

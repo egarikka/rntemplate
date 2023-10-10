@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
-import { CustomButton } from '@components/atoms/custom-button';
-import { CustomText } from '@components/atoms/custom-text';
+import { CustomButton } from '@components/custom-button';
+import { CustomText } from '@components/custom-text';
 
 export const GlobalMessageStyles = {
   Modal: styled.Modal`
