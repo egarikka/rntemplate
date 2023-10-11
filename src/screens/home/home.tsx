@@ -39,12 +39,12 @@ export const Home: React.FC = () => {
   };
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps='handled'>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps={'handled'}>
         <Spacer gap={10} />
 
         <CustomModal
-          cancelText='Cancel'
-          actionText='Save'
+          cancelText={'Cancel'}
+          actionText={'Save'}
           isOpen={isOpen}
           modalTitle={'Invite your '}
           onClose={onToggle}
@@ -52,8 +52,8 @@ export const Home: React.FC = () => {
           <View />
         </CustomModal>
         <CustomModal
-          cancelText='Cancel'
-          actionText='Delete'
+          cancelText={'Cancel'}
+          actionText={'Delete'}
           isOpen={deleteModal.isOpen}
           modalTitle={'Invite your '}
           onClose={deleteModal.onToggle}
@@ -62,8 +62,8 @@ export const Home: React.FC = () => {
           <View />
         </CustomModal>
         <CustomModal
-          cancelText='Cancel'
-          actionText='Save'
+          cancelText={'Cancel'}
+          actionText={'Save'}
           isOpen={bottomModal.isOpen}
           modalTitle={'Invite your '}
           onClose={bottomModal.onToggle}
@@ -72,67 +72,82 @@ export const Home: React.FC = () => {
           <View />
         </CustomModal>
 
-        <CustomModal cancelText='Cancel' isOpen={sucessModal.isOpen} onClose={sucessModal.onToggle}>
+        <CustomModal
+          cancelText={'Cancel'}
+          isOpen={sucessModal.isOpen}
+          onClose={sucessModal.onToggle}>
           <View />
-          <Icon type='success' />
+          <Icon type={'success'} />
         </CustomModal>
 
         <CustomModal
-          cancelText='Cancel'
+          cancelText={'Cancel'}
           isOpen={actionModal.isOpen}
           modalTitle={'Action'}
           onClose={actionModal.onToggle}
-          isBottom
-        />
-
+          isBottom>
+          <View />
+        </CustomModal>
         <BottomSheet sheetRef={ref} renderHeader={<Text>header</Text>} snapPoints={['80%']}>
           <CustomButton onPress={onToggle} text={'save'} type={'rounded'} />
         </BottomSheet>
 
         <CenterContainer>
-          <CustomButton onPress={onToggle} text={'modal'} type='rounded' />
+          <CustomButton onPress={onToggle} text={'modal'} type={'rounded'} />
           <Spacer gap={10} />
-          <CustomButton onPress={sucessModal.onToggle} text={'Success modal'} type="rounded" />
+          <CustomButton onPress={sucessModal.onToggle} text={'Success modal'} type={'rounded'} />
           <Spacer gap={10} />
-          <CustomButton onPress={actionModal.onToggle} text={'Action Modal'} type="rounded" />
+          <CustomButton onPress={actionModal.onToggle} text={'Action Modal'} type={'rounded'} />
           <Spacer gap={10} />
-          <CustomButton onPress={showErrorToast} text={'Toast error button'} type='rounded' />
+          <CustomButton onPress={showErrorToast} text={'Toast error button'} type={'rounded'} />
           <Spacer gap={10} />
-          <CustomButton onPress={showSuccessToast} text={'Toast sucess button'} type='rounded' />
+          <CustomButton onPress={showSuccessToast} text={'Toast sucess button'} type={'rounded'} />
           <Spacer gap={10} />
 
           <Spacer gap={10} />
-          <CustomButton onPress={bottomModal.onToggle} text={'Bottom modal'} type="rounded" />
+          <CustomButton onPress={bottomModal.onToggle} text={'Bottom modal'} type={'rounded'} />
           <Spacer gap={10} />
-          <CustomButton onPress={deleteModal.onToggle} text={'delete modal'} type="rounded" />
+          <CustomButton onPress={deleteModal.onToggle} text={'delete modal'} type={'rounded'} />
           <Spacer gap={10} />
           <CustomButton onPress={open} text={'bottom sheet'} type={'rounded'} />
         </CenterContainer>
 
         <View style={{ paddingHorizontal: 10 }}>
           <Spacer gap={10} />
-          <Input value={value} setValue={setValue} isClearable type='search' placeholder='search' />
-          <Spacer gap={10} />
           <Input
             value={value}
             setValue={setValue}
             isClearable
-            type='password'
-            placeholder='Password'
+            type={'search'}
+            placeholder={'search'}
           />
           <Spacer gap={10} />
-          <Input value={value} setValue={setValue} isClearable placeholder='Add users' />
+          <Input
+            value={value}
+            setValue={setValue}
+            isClearable
+            type={'password'}
+            placeholder={'Password'}
+          />
+          <Spacer gap={10} />
+          <Input value={value} setValue={setValue} isClearable placeholder={'Add users'} />
           <Spacer gap={10} />
           <Input
             value={value}
             setValue={setValue}
             isClearable
-            type='password'
-            placeholder='Password'
+            type={'password'}
+            placeholder={'Password'}
             isError
           />
           <Spacer gap={10} />
-          <Input value={value} setValue={setValue} isClearable placeholder='Danger error' isError />
+          <Input
+            value={value}
+            setValue={setValue}
+            isClearable
+            placeholder={'Danger error'}
+            isError
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
